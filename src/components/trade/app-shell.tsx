@@ -23,16 +23,19 @@ import {
   X,
   Wallet,
   ChartNoAxesCombined,
+  Globe,
 } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Backtest } from "./backtest/backtest"
+import { MarketBias } from "@/components/market-bias"
 
-type View = "dashboard" | "log" | "backtest"
+type View = "dashboard" | "log" | "backtest" | "market-bias"
 
 const NAV_ITEMS: { id: View; label: string; icon: React.ElementType }[] = [
   { id: "dashboard", label: "Dashboard", icon: LayoutDashboard },
   { id: "log", label: "Trade Log", icon: FileText },
   { id: "backtest", label: "Backtest", icon: FlaskConical },
+  { id: "market-bias", label: "Market Bias", icon: Globe },
 ]
 
 // ─── Settings modal ───────────────────────────────────────────────────────────
@@ -153,6 +156,7 @@ const PAGE_TITLES: Record<View, string> = {
   dashboard: "Dashboard",
   log: "Trade Log",
   backtest: "Backtest",
+  "market-bias": "Market Bias",
 }
 
 // ─── App shell ────────────────────────────────────────────────────────────────
@@ -227,6 +231,7 @@ export function AppShell() {
               {view === "dashboard" && <Dashboard />}
               {view === "log" && <TradeLog />}
               {view === "backtest" && <Backtest />}
+              {view === "market-bias" && <MarketBias />}
             </>
           )}
         </main>
